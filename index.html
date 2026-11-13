@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brandora AI — Pre-Publish Brand Governance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Strict 3-Color Rich Palette:
+     1. Deep Royal Indigo (#1e1b4b)
+     2. Electric Violet (#6d28d9)
+     3. Rich Warm Gold (#b45309 / #d97706) */
+  --indigo: #1e1b4b;
+  --indigo-mid: #312e81;
+  --violet: #6d28d9;
+  --violet-soft: #ede9fe;
+  --gold: #b45309;
+  --gold-bright: #d97706;
+  --gold-soft: #fef3c7;
+
+  --bg: #f8f7fc;
+  --card: #ffffff;
+  --tx: #1e1b4b;
+  --mu: #5b577a;
+  --bd: #e0dcf0;
+  --hl: #fef3c7;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 520px at 0% -10%, rgba(109, 40, 217, 0.09), transparent),
+    radial-gradient(750px 420px at 100% 0%, rgba(217, 119, 6, 0.08), transparent),
+    var(--bg);
+  color: var(--tx);
+  font: 15px/1.55 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--bd);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.brand-wrap { display: flex; flex-direction: column; }
+h1 { font: 700 20px 'Fraunces', Georgia, serif; margin: 0; color: var(--indigo); letter-spacing: -0.01em; }
+header small { color: var(--mu); font-size: 12.5px; }
+
+.logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, var(--indigo), var(--violet));
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font: 700 19px 'Fraunces', Georgia, serif;
+  box-shadow: 0 4px 14px rgba(109, 40, 217, 0.28);
+  flex-shrink: 0;
+}
+
+.logo.big {
+  width: 54px;
+  height: 54px;
+  font-size: 26px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--violet), var(--gold-bright));
+  color: #ffffff;
+  box-shadow: 0 8px 22px rgba(109, 40, 217, 0.35);
+}
+
+nav {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+  background: var(--bg);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--bd);
+}
+
+button, select, input, textarea { font: inherit; color: var(--tx); }
+
+button {
+  border: 1px solid var(--bd);
+  background: var(--card);
+  padding: 7px 13px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 27, 75, 0.08);
+  border-color: var(--violet);
+}
+
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+nav button { border: 0; background: none; border-radius: 9px; color: var(--mu); }
+nav button.on {
+  background: var(--card);
+  box-shadow: 0 2px 8px rgba(30, 27, 75, 0.09);
+  color: var(--violet);
+  font-weight: 600;
+}
+
+button.p {
+  background: linear-gradient(135deg, var(--indigo), var(--violet));
+  color: #ffffff;
+  border: 0;
+  padding: 8px 15px;
+  font-weight: 600;
+}
+
+button.p:hover:not(:disabled) {
+  box-shadow: 0 6px 16px rgba(109, 40, 217, 0.32);
+}
+
+button.gold-btn {
+  background: var(--gold-soft);
+  color: var(--gold);
+  border: 1px solid rgba(180, 83, 9, 0.35);
+  font-weight: 600;
+}
+
+.user { display: flex; gap: 8px; align-items: center; }
+
+main {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 18px 20px 36px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  gap: 18px;
+}
+
+@media (max-width: 880px) { main { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 30px rgba(30, 27, 75, 0.04);
+}
+
+h2 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--mu);
+  margin: 0 0 12px;
+}
+
+textarea, input, select {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  padding: 9px 11px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+textarea:focus, input:focus, select:focus {
+  outline: none;
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.14);
+  background: #ffffff;
+}
+
+textarea { resize: vertical; min-height: 165px; }
+.row { display: flex; gap: 9px; margin-bottom: 10px; flex-wrap: wrap; }
+.row > * { flex: 1; min-width: 120px; }
+
+.hl {
+  white-space: pre-wrap;
+  line-height: 1.75;
+  max-height: 270px;
+  overflow: auto;
+  padding: 12px;
+  background: var(--bg);
+  border-radius: 10px;
+  border: 1px solid var(--bd);
+}
+
+mark {
+  background: var(--gold-soft);
+  border-bottom: 2px solid var(--gold-bright);
+  color: var(--indigo);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 1px 3px;
+}
+
+/* Verdict Banner: Perfect vs Not Perfect */
+.verdict {
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.verdict.perfect {
+  background: var(--violet-soft);
+  border: 1px solid rgba(109, 40, 217, 0.3);
+  color: var(--indigo);
+}
+
+.verdict.imperfect {
+  background: var(--gold-soft);
+  border: 1px solid rgba(180, 83, 9, 0.35);
+  color: var(--indigo);
+}
+
+.verdict-title {
+  font: 700 16px 'Fraunces', Georgia, serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iss {
+  background: var(--bg);
+  border: 1px solid var(--bd);
+  border-left: 4px solid var(--violet);
+  border-radius: 11px;
+  padding: 12px 14px;
+  margin-bottom: 11px;
+  animation: fadeIn 0.22s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } }
+
+.iss.critical { border-left-color: var(--gold-bright); }
+.iss.minor { border-left-color: var(--indigo-mid); }
+.iss.done { opacity: 0.55; }
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--violet);
+  background: var(--violet-soft);
+  padding: 2px 7px;
+  border-radius: 5px;
+  margin-right: 6px;
+}
+
+.tag.gold {
+  color: var(--gold);
+  background: var(--gold-soft);
+}
+
+.q {
+  background: #ffffff;
+  border: 1px solid var(--bd);
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12.5px;
+  word-break: break-word;
+}
+
+.score {
+  font: 700 36px 'Fraunces', Georgia, serif;
+  background: linear-gradient(90deg, var(--indigo), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.badge {
+  padding: 4px 11px;
+  border-radius: 99px;
+  border: 1px solid var(--bd);
+  background: var(--bg);
+  font-weight: 600;
+  font-size: 12.5px;
+  color: var(--indigo);
+}
+
+.badge.v {
+  background: var(--violet-soft);
+  color: var(--violet);
+  border-color: rgba(109, 40, 217, 0.3);
+}
+
+.badge.g {
+  background: var(--gold-soft);
+  color: var(--gold);
+  border-color: rgba(180, 83, 9, 0.35);
+}
+
+.mu { color: var(--mu); }
+.hide { display: none !important; }
+.full { grid-column: 1 / -1; }
+
+.log div { padding: 10px 0; border-bottom: 1px solid var(--bd); }
+.log div:last-child { border-bottom: 0; }
+
+.hero {
+  background: linear-gradient(125deg, var(--indigo) 0%, var(--indigo-mid) 48%, var(--violet) 100%);
+  color: #ffffff;
+  border-radius: 22px;
+  padding: 28px 30px;
+  box-shadow: 0 16px 40px rgba(30, 27, 75, 0.22);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero button.p {
+  background: var(--gold-bright);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 11px 18px;
+  box-shadow: 0 6px 18px rgba(217, 119, 6, 0.35);
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.kpi {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 28px rgba(30, 27, 75, 0.04);
+}
+
+.kpi b {
+  display: block;
+  font: 700 34px 'Fraunces', Georgia, serif;
+  color: var(--violet);
+  margin: 4px 0;
+}
+
+.kpi small { color: var(--mu); font-size: 12.5px; }
+
+.bar {
+  display: grid;
+  grid-template-columns: 125px 1fr 32px;
+  gap: 10px;
+  align-items: center;
+  margin: 11px 0;
+  font-size: 13.5px;
+}
+
+.bar i {
+  display: block;
+  height: 10px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--indigo), var(--violet), var(--gold-bright));
+}
+
+.rc { padding: 10px 0; border-bottom: 1px solid var(--bd); }
+.rc:last-child { border-bottom: 0; }
+
+/* Centered Minimal Login Screen (Brandora AI top-middle above card) */
+#login {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: auto;
+  background: radial-gradient(circle at top, var(--indigo-mid), var(--indigo) 70%);
+}
+
+.login-top-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.login-top-brand span {
+  font: 700 26px 'Fraunces', Georgia, serif;
+  margin-top: 10px;
+  letter-spacing: -0.01em;
+}
+
+.lbox {
+  max-width: 430px;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(10, 8, 30, 0.55);
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.lform { padding: 34px 36px; }
+.lform h3 { font: 700 24px 'Fraunces', Georgia, serif; margin: 0 0 4px; color: var(--indigo); text-align: center; }
+.lform label { display: block; font-size: 12px; font-weight: 600; margin: 13px 0 5px; color: var(--mu); }
+.wide { width: 100%; margin-top: 11px; padding: 10px 14px; }
+.err { color: var(--gold); min-height: 20px; font-size: 13px; font-weight: 600; margin-top: 8px; text-align: center; }
+
+footer {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 16px 20px 28px;
+  text-align: center;
+  color: var(--mu);
+  font-size: 13px;
+  border-top: 1px solid var(--bd);
+}
+
+@media (max-width: 760px) {
+  header small { display: none; }
+  nav { order: 3; width: 100%; overflow: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- Centered Login Screen with Brandora AI centered at top -->
+<div id="login">
+  <div class="login-top-brand">
+    <div class="logo big">B</div>
+    <span>Brandora AI</span>
+  </div>
+  <div class="lbox">
+    <div class="lform">
+      <h3>Sign in</h3>
+      <label>Work email</label>
+      <input id="em" value="asha@brandora.ai">
+      <label>Password</label>
+      <input id="pw" type="password" value="brand123">
+      <label>Role</label>
+      <select id="role">
+        <option value="creator">Content Creator</option>
+        <option value="reviewer">Brand Reviewer</option>
+        <option value="admin" selected>Admin / Brand Lead</option>
+      </select>
+      <div id="lerr" class="err"></div>
+      <button class="p wide" id="signin">Sign in</button>
+      <button class="wide" id="demo">Continue as demo admin</button>
+      <p class="mu" style="font-size:12px; margin-top:12px; text-align:center;">Demo password: <b>brand123</b></p>
+    </div>
+  </div>
+</div>
+
+<!-- Sticky App Header (3 streamlined tabs: Dashboard, Check content, Audit log) -->
+<header>
+  <div class="logo">B</div>
+  <div class="brand-wrap">
+    <h1>Brandora AI</h1>
+    <small>Your Brand. Your Voice. Always Consistent.</small>
+  </div>
+  <nav>
+    <button class="on" data-t="dash">Dashboard</button>
+    <button data-t="review">Check content</button>
+    <button data-t="log">Audit log</button>
+  </nav>
+  <div class="user">
+    <span id="uchip" class="badge v"></span>
+    <button id="logout">Sign out</button>
+  </div>
+</header>
+
+<!-- TAB 1: DASHBOARD -->
+<main id="dash">
+  <div class="full hero">
+    <div>
+      <h2 id="hello" style="color:#fff;font:700 28px 'Fraunces',Georgia,serif;text-transform:none;letter-spacing:0;margin:0"></h2>
+      <p style="opacity:.92;margin:6px 0 0;max-width:600px">Pre-flight governance across copy, customer complaints, facts, and visual identity — with human sign-off before anything goes live.</p>
+    </div>
+    <button class="p" id="newcheck">+ New content check</button>
+  </div>
+
+  <div class="full kpis" id="kpis"></div>
+
+  <div class="card">
+    <h2>Issues caught by category</h2>
+    <div id="cats"></div>
+  </div>
+
+  <div class="card">
+    <h2>Recent human decisions</h2>
+    <div id="recent"></div>
+  </div>
+</main>
+
+<!-- TAB 2: CHECK CONTENT (TEXT, COMPLAINTS, CLAIMS & VISUAL SPECS) -->
+<main id="review" class="hide">
+  <section>
+    <div class="card">
+      <h2>1 · Submit content or complaint response</h2>
+      <div class="row">
+        <select id="type">
+          <option value="complaint">Customer complaint response</option>
+          <option value="post">Social post</option>
+          <option value="ad">Advertisement</option>
+          <option value="email">Email</option>
+          <option value="doc">Document / Whitepaper</option>
+        </select>
+        <select id="sample">
+          <option value="">Load a sample draft…</option>
+          <option value="0">Sample: Customer complaint reply</option>
+          <option value="1">Sample: Product launch ad</option>
+          <option value="2">Sample: Enterprise email</option>
+          <option value="3">Sample: Compliant social post</option>
+        </select>
+      </div>
+      <textarea id="txt" placeholder="Paste customer complaint response, post, ad, email, or document text here…"></textarea>
+      <div class="mu" style="margin:10px 0 5px;font-size:12.5px">Visual identity & accessibility spec (hex codes, font-family, image alt-text notes)</div>
+      <textarea id="spec" style="min-height:74px" placeholder="e.g. background: #1E1B4B; accent: #6D28D9; font-family: Inter; alt-text: Dashboard overview"></textarea>
+      <div class="row" style="margin-top:12px">
+        <button class="p" id="check" style="flex:2">Check against brand guidelines</button>
+        <button id="clear">Clear</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Marked-up content</h2>
+      <div id="marked" class="hl mu">Run a check to see highlighted issues and click any highlight to inspect its fix.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card" id="sumcard">
+      <h2>2 · Governance verdict & findings</h2>
+      <div id="verdictBox"></div>
+      <div class="row" style="align-items:center">
+        <div>
+          <div class="score" id="score">–</div>
+          <div class="mu" id="scoresub">No check run yet</div>
+        </div>
+        <div style="text-align:right">
+          <span class="badge" id="status">Draft</span><br>
+          <button class="p" id="fixall" style="margin-top:8px">Apply all suggested fixes</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="issues"></div>
+
+    <div class="card">
+      <h2>3 · Human-in-the-loop final approval</h2>
+      <div class="row">
+        <input id="who" placeholder="Reviewer name">
+        <input id="note" placeholder="Comment (required to override open issues)">
+      </div>
+      <div class="row">
+        <button class="p" id="approve">Approve for publish</button>
+        <button id="changes">Request changes</button>
+        <button class="gold-btn" id="reject">Reject</button>
+      </div>
+      <div id="rolemsg" style="font-size:13px;color:var(--gold);font-weight:600;margin-top:4px"></div>
+      <div class="mu" id="appmsg" style="font-size:13px;margin-top:4px">Brandora AI never auto-publishes: a named human reviewer makes the final call and every decision is logged.</div>
+    </div>
+  </section>
+</main>
+
+<!-- TAB 3: AUDIT LOG -->
+<main id="log" class="hide">
+  <div class="full card">
+    <h2>Immutable Audit Log & Governance Trail</h2>
+    <p class="mu" style="margin-top:-4px;margin-bottom:14px;font-size:13.5px">
+      Provides a permanent, timestamped compliance record showing <b>who</b> reviewed each draft, <b>what decision</b> was made (Approved, Changes requested, or Rejected), <b>how many issues</b> were open or waived, and <b>why</b> any exceptions were overridden before publication.
+    </p>
+    <div class="log" id="logl"><span class="mu">No decisions recorded yet.</span></div>
+  </div>
+</main>
+
+<footer>
+  <b>Brandora AI</b> — Your Brand. Your Voice. Always Consistent. · Built for Pre-Publication Brand Governance
+</footer>
+
+<script>
+// Brandora AI Approved Governance Ruleset (Active under the hood)
+const G = {
+  brand: "Brandora AI",
+  rules: [
+    { cat: "Terminology", rule: "Use “cost-effective” or “high-value”, never “cheap”", pattern: "\\bcheap(est|er)?\\b", replace: "cost-effective" },
+    { cat: "Terminology", rule: "Address audiences as “everyone” or “teams”, never “guys”", pattern: "\\bguys\\b", replace: "everyone" },
+    { cat: "Terminology", rule: "Refer to buyers as “enterprise partners” or “clients”, not “customers”", pattern: "\\bcustomers\\b", replace: "enterprise partners", sev: "minor" },
+    { cat: "Terminology", rule: "Product name must always be capitalized as “Brandora AI”", pattern: "Brandora ai|brandora ai|BRANDORA AI|BrandoraAI", flags: "", replace: "Brandora AI", sev: "critical" },
+    { cat: "Complaint Tone", rule: "Never blame or dismiss a complainant (“your fault”, “you failed to”, “calm down”)", pattern: "\\b(your fault|you failed to|calm down|not our problem|you misunderstood)\\b", replace: "we understand how frustrating this is and we are resolving it now", sev: "critical" },
+    { cat: "Complaint Tone", rule: "Avoid defensive delays (“we can't help”, “nothing we can do”); offer concrete next steps", pattern: "\\b(we can't help|nothing we can do|too bad)\\b", replace: "our specialist team is prioritizing this right away", sev: "critical" },
+    { cat: "Claims", rule: "No unsubstantiated superlatives or hype (“#1”, “100% hallucination-free”, “magic”, “unbeatable”)", pattern: "\\b(the best|#1|number one|world.s best|unbeatable|revolutionary|game-changing|magic|100% hallucination[- ]free)\\b", suggest: "Replace with an approved metric such as “reduces manual review time by 40%” or “citation-grounded RAG”." },
+    { cat: "Tone", rule: "No emojis in official Brandora AI communications; maintain a calm, authoritative, supportive voice", pattern: "[\\u{1F300}-\\u{1FAFF}\\u{2600}-\\u{27BF}]", flags: "u", replace: "", sev: "minor" },
+    { cat: "Visual identity", rule: "Logo must never be stretched, rotated, recolored, or placed over low-contrast backgrounds", pattern: "(stretch(ed)?|rotat(e|ed)|recolou?r(ed)?|distort(ed)?) (the )?logo|logo (on|over) (a )?(busy|photo|low-contrast)", suggest: "Use the official Brandora AI master logo with clear safe-zone padding." },
+    { cat: "Accessibility", rule: "WCAG 2.1 AA requires descriptive alt-text on every visual asset", pattern: "missing alt[- ]?text|alt\\s*[:=]\\s*(\"\"|''|none|null)", suggest: "Provide concise descriptive alt-text (e.g. alt-text: Brandora AI pre-flight compliance report)." }
+  ],
+  facts: [
+    { label: "Uptime SLA", find: "\\b\\d{2,3}(\\.\\d+)?% uptime( SLA)?\\b", ok: "99\\.9% uptime", replace: "99.9% uptime SLA" },
+    { label: "Review efficiency metric", find: "reduces (manual )?review time by \\d+%", ok: "40%", replace: "reduces manual review time by 40%" },
+    { label: "Security compliance", find: "SOC\\s?2( Type [I12]+)?( and ISO \\d+)? certified", ok: "SOC 2 Type II and ISO 27001 certified", replace: "SOC 2 Type II and ISO 27001 certified" },
+    { label: "Data privacy guarantee", find: "(Zero[- ]Data[- ]Retention|trains on customer data|stores prompt logs forever)", ok: "Zero[- ]Data[- ]Retention", replace: "Zero-Data-Retention" },
+    { label: "Founding year", find: "(founded|established|since) (in )?(19|20)\\d\\d", ok: "2024", replace: "founded in 2024" }
+  ],
+  tone: { maxExclaim: 1, allowCaps: ["AI", "SLA", "SOC", "ISO", "WCAG", "RAG", "API", "PDF", "FAQ", "CSV", "JSON", "URL"] },
+  required: [
+    { appliesTo: ["complaint"], rule: "Complaint replies must include a clear escalation or resolution owner", test: "(specialist|support team|case #|ticket|resolve|follow up)", text: "Our dedicated support specialist will follow up within 2 business hours with a full resolution." },
+    { appliesTo: ["ad"], rule: "Ads must carry the enterprise compliance notice", test: "enterprise terms apply", text: "Enterprise terms apply. Zero-Data-Retention enforced." },
+    { appliesTo: ["email"], rule: "Emails must include an unsubscribe line", test: "unsubscribe", text: "Unsubscribe anytime: {{unsubscribe_link}}" }
+  ],
+  colors: ["#1E1B4B", "#6D28D9", "#B45309", "#D97706", "#FFFFFF", "#F8F7FC"],
+  fonts: ["Inter", "Fraunces"]
+};
+
+const SAMPLES = [
+  {
+    type: "complaint",
+    txt: "Hi guys,\n\nCalm down — it was your fault that the draft failed checks because you misunderstood the settings!! There is nothing we can do right now. Brandora ai is the best cheap tool on the market 🔥",
+    spec: "background: #1E1B4B; color: #FFFFFF; font-family: Inter;"
+  },
+  {
+    type: "ad",
+    txt: "brandora ai is a 100% hallucination-free, game-changing platform!! We guarantee 100% uptime and reduces manual review time by 85%. Built for customers since 2020.",
+    spec: "background: #2E8B57; accent: #E11D48; font-family: Comic Sans MS; missing alt-text; we stretched the logo."
+  },
+  {
+    type: "email",
+    txt: "Hello enterprise partners,\n\nBrandora AI is SOC 2 Type II and ISO 27001 certified with Zero-Data-Retention. Our platform reduces manual review time by 40% and maintains a 99.9% uptime SLA.\n\nBest,\nThe Brandora AI Team",
+    spec: "background: #F8F7FC; color: #1E1B4B; font-family: Inter;"
+  },
+  {
+    type: "post",
+    txt: "Consistent brand governance starts before you hit publish. Brandora AI empowers enterprise partners to verify claims, tone, and WCAG accessibility in seconds — backed by our 99.9% uptime SLA and Zero-Data-Retention architecture.",
+    spec: "background: #1E1B4B; accent: #6D28D9; font-family: Fraunces;"
+  }
+];
+
+let issues = [], sig = null, dismissed = new Set(), status = "Draft", log = [];
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const cap = (o, r) => (/[A-Z]/.test(o[0]) && r) ? r[0].toUpperCase() + r.slice(1) : r;
+const rgb = h => {
+  h = h.replace("#", "");
+  if (h.length === 3) h = h.split("").map(c => c + c).join("");
+  return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16));
+};
+const dist = (a, b) => {
+  a = rgb(a); b = rgb(b);
+  return Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+};
+
+function scan() {
+  const t = $("txt").value, s = $("spec").value, ty = $("type").value, out = [];
+  const add = o => out.push(Object.assign({ sev: "major", fix: null, field: "txt" }, o));
+
+  for (const r of G.rules) {
+    const re = new RegExp(r.pattern, (r.flags ?? "i") + "g");
+    let m;
+    while ((m = re.exec(t))) {
+      if (!m[0]) { re.lastIndex++; continue; }
+      add({
+        cat: r.cat,
+        sev: r.sev || "major",
+        rule: r.rule,
+        start: m.index,
+        end: m.index + m[0].length,
+        text: m[0],
+        fix: r.replace !== undefined ? cap(m[0], r.replace) : null,
+        sugg: r.suggest || (r.replace === "" ? "Remove disallowed element." : "Suggested fix: “" + r.replace + "”.")
+      });
+    }
+    const reSpec = new RegExp(r.pattern, (r.flags ?? "i") + "g");
+    let n;
+    while ((n = reSpec.exec(s))) {
+      if (!n[0]) { reSpec.lastIndex++; continue; }
+      add({
+        cat: r.cat,
+        sev: r.sev || "major",
+        rule: r.rule,
+        field: "spec",
+        start: n.index,
+        end: n.index + n[0].length,
+        text: n[0],
+        fix: r.replace !== undefined ? cap(n[0], r.replace) : null,
+        sugg: r.suggest || "Suggested fix: “" + r.replace + "”."
+      });
+    }
+  }
+
+  for (const f of G.facts) {
+    const re = new RegExp(f.find, "gi");
+    let m;
+    while ((m = re.exec(t))) {
+      if (!m[0]) continue;
+      if (!new RegExp(f.ok, "i").test(m[0])) {
+        add({
+          cat: "Approved facts",
+          sev: "critical",
+          rule: f.label + " must match verified corporate fact: “" + f.replace + "”",
+          start: m.index,
+          end: m.index + m[0].length,
+          text: m[0],
+          fix: f.replace,
+          sugg: "Replace with approved fact: “" + f.replace + "”."
+        });
+      }
+    }
+  }
+
+  const ex = [...t.matchAll(/!/g)];
+  let seen = 0;
+  for (const m of ex) {
+    seen++;
+    if (seen > G.tone.maxExclaim) {
+      add({
+        cat: "Tone",
+        sev: "minor",
+        rule: "Maximum " + G.tone.maxExclaim + " exclamation mark allowed per message",
+        start: m.index,
+        end: m.index + 1,
+        text: "!",
+        fix: ".",
+        sugg: "Use a period to keep the tone calm and executive."
+      });
+    }
+  }
+
+  for (const m of t.matchAll(/\b[A-Z]{4,}\b/g)) {
+    if (G.tone.allowCaps.includes(m[0])) continue;
+    add({
+      cat: "Tone",
+      sev: "minor",
+      rule: "Avoid ALL-CAPS words (except approved acronyms)",
+      start: m.index,
+      end: m.index + m[0].length,
+      text: m[0],
+      fix: m[0][0] + m[0].slice(1).toLowerCase(),
+      sugg: "Convert to standard sentence case."
+    });
+  }
+
+  for (const r of G.required) {
+    if (r.appliesTo.includes(ty) && !new RegExp(r.test, "i").test(t)) {
+      add({
+        cat: "Required text",
+        sev: "major",
+        rule: r.rule,
+        start: -1,
+        text: "(missing required clause)",
+        fix: r.text,
+        append: true,
+        sugg: "Append required text: “" + r.text + "”."
+      });
+    }
+  }
+
+  for (const fld of ["txt", "spec"]) {
+    const src = fld === "txt" ? t : s;
+    for (const m of src.matchAll(/#(?:[0-9a-f]{6}|[0-9a-f]{3})\b/gi)) {
+      let best = G.colors[0], bd = 1e9;
+      for (const c of G.colors) {
+        const d = dist(m[0], c);
+        if (d < bd) { bd = d; best = c; }
+      }
+      if (bd > 0) {
+        add({
+          cat: "Visual identity",
+          sev: bd < 40 ? "minor" : "major",
+          rule: "Colors must belong to the official Brandora AI 3-color palette (" + G.colors.slice(0, 4).join(", ") + ")",
+          field: fld,
+          start: m.index,
+          end: m.index + m[0].length,
+          text: m[0],
+          fix: best,
+          sugg: "Replace with approved brand hex token: " + best
+        });
+      }
+    }
+    for (const m of src.matchAll(/font(?:-family)?\s*[:=]\s*([^;\n}]+)/gi)) {
+      const v = m[1].trim();
+      if (!G.fonts.some(f => v.toLowerCase().includes(f.toLowerCase()))) {
+        const st = m.index + m[0].indexOf(m[1]);
+        add({
+          cat: "Visual identity",
+          sev: "major",
+          rule: "Typography must use " + G.fonts.join(" or "),
+          field: fld,
+          start: st,
+          end: st + m[1].length,
+          text: v,
+          fix: G.fonts[0],
+          sugg: "Switch typeface to " + G.fonts[0] + " (body) or " + G.fonts[1] + " (headings)."
+        });
+      }
+    }
+  }
+  return out;
+}
+
+function key(i) { return i.rule + "|" + i.text + "|" + i.field; }
+
+function check() {
+  issues = scan();
+  sig = $("txt").value + "\u0001" + $("spec").value + $("type").value;
+  status = "Pending review";
+  render();
+}
+
+function render() {
+  const act = issues.filter(i => !dismissed.has(key(i)));
+  const w = { critical: 20, major: 10, minor: 4 };
+  const sc = Math.max(0, 100 - act.reduce((a, i) => a + w[i.sev], 0));
+
+  $("score").textContent = sig === null ? "–" : sc + "/100";
+  $("scoresub").textContent = sig === null
+    ? "No check run yet"
+    : (act.length ? act.length + " open issue" + (act.length > 1 ? "s" : "") + " · " + act.filter(i => i.sev === "critical").length + " critical" : "0 open issues") + (dismissed.size ? " · " + dismissed.size + " waived" : "");
+
+  $("status").textContent = status;
+  $("status").className = "badge " + (status === "Approved" ? "v" : act.length ? "g" : "v");
+  gate();
+
+  // Perfect vs Not Perfect Verdict Banner
+  if (sig === null) {
+    $("verdictBox").innerHTML = "";
+  } else if (act.length === 0) {
+    $("verdictBox").innerHTML = `<div class="verdict perfect"><div><div class="verdict-title">✓ PERFECT — 100% Brand Compliant</div><div style="font-size:13px;margin-top:2px">All terminology, complaint tone, corporate facts, and visual tokens match Brandora AI guidelines. Ready for human sign-off.</div></div><span class="badge v">Passed</span></div>`;
+  } else {
+    $("verdictBox").innerHTML = `<div class="verdict imperfect"><div><div class="verdict-title">⚠ NOT PERFECT — ${act.length} Guideline Issue${act.length > 1 ? "s" : ""} Found</div><div style="font-size:13px;margin-top:2px">Review the broken rules below and apply the suggested fixes to make this content brand-compliant.</div></div><span class="badge g">Needs Fixes</span></div>`;
+  }
+
+  $("issues").innerHTML = sig === null ? "" : issues.length ? issues.map((i, n) => {
+    const d = dismissed.has(key(i));
+    return `<div class="iss ${i.sev}${d ? " done" : ""}" id="i${n}">
+      <div style="margin-bottom:5px">
+        <span class="tag ${i.sev === "critical" ? "gold" : ""}">${esc(i.cat)} · ${esc(i.sev)}</span>
+        ${i.field === "spec" ? '<span class="tag">visual spec</span>' : ""}
+      </div>
+      <div><b>Broken guideline:</b> ${esc(i.rule)}</div>
+      <div style="margin:5px 0"><b>Found:</b> <span class="q">${esc(i.text)}</span>${i.fix !== null && !i.append ? ` → <span class="q">${esc(i.fix || "(remove)")}</span>` : ""}</div>
+      <div class="mu" style="font-size:13.5px"><b>Solution:</b> ${esc(i.sugg)}</div>
+      <div class="row" style="margin:9px 0 0">
+        ${d ? `<button data-u="${n}">Undo waive</button>` : `${i.fix !== null ? `<button class="p" data-a="${n}">Apply suggested fix</button>` : ""}<button data-d="${n}">Request waiver…</button>`}
+      </div>
+    </div>`;
+  }).join("") : '<div class="card" style="color:var(--violet)"><b>Perfect.</b> Everything aligns with Brandora AI guidelines.</div>';
+
+  const t = $("txt").value;
+  const spans = issues.filter(i => i.field === "txt" && i.start >= 0 && !dismissed.has(key(i))).sort((a, b) => a.start - b.start);
+  let h = "", p = 0;
+  spans.forEach(i => {
+    if (i.start < p) return;
+    h += esc(t.slice(p, i.start)) + `<mark data-s="${issues.indexOf(i)}" title="${esc(i.rule)}">${esc(t.slice(i.start, i.end))}</mark>`;
+    p = i.end;
+  });
+
+  $("marked").innerHTML = sig === null ? "Run a check to see highlighted issues and click any highlight to inspect its fix." : (h + esc(t.slice(p))) || "(no text)";
+  $("marked").classList.toggle("mu", sig === null);
+
+  const stale = sig !== null && sig !== $("txt").value + "\u0001" + $("spec").value + $("type").value;
+  $("appmsg").textContent = sig === null
+    ? "Run a check first."
+    : stale
+      ? "Content edited since last check — re-run the check before final approval."
+      : act.length
+        ? act.length + " open issue(s): approving requires a comment recording why exceptions were overridden."
+        : "All checks passed: ready for human final approval.";
+}
+
+function decide(a) {
+  const act = issues.filter(i => !dismissed.has(key(i))), who = $("who").value.trim(), note = $("note").value.trim();
+  if (sig === null) return alert("Run a check first.");
+  if (sig !== $("txt").value + "\u0001" + $("spec").value + $("type").value) return alert("Content changed since last check. Re-run the check first.");
+  if (!who) return alert("Enter the reviewer’s name.");
+  if (a === "Approved" && act.length && !note) return alert("There are open issues. Add a comment explaining why you are overriding them.");
+  if (a !== "Approved" && !note) return alert("Add a short comment explaining this decision.");
+
+  status = a;
+  const sc = Math.max(0, 100 - act.reduce((x, i) => x + ({ critical: 20, major: 10, minor: 4 })[i.sev], 0));
+  S.hist.unshift({ t: Date.now(), who, a, type: $("type").value, score: sc, open: act.length, ex: $("txt").value.slice(0, 65) });
+  log.unshift({ t: new Date().toLocaleString(), who, a, type: $("type").selectedOptions[0].text, open: act.length, waived: [...dismissed].length, note, excerpt: $("txt").value.slice(0, 85) });
+  render();
+  renderLog();
+}
+
+function renderLog() {
+  save();
+  $("logl").innerHTML = log.length ? log.map(l => `<div>
+    <span class="badge ${l.a === "Approved" ? "v" : "g"}">${esc(l.a)}</span>
+    <b>${esc(l.who)}</b> · <span class="mu">${esc(l.t)}</span><br>
+    <span class="mu" style="font-size:13px">${esc(l.type)} · ${l.open} open issue(s), ${l.waived} waived · “${esc(l.excerpt)}…”</span><br>
+    <div style="margin-top:3px">${esc(l.note) || '<span class="mu">(no comment)</span>'}</div>
+  </div>`).join("") : '<span class="mu">No decisions recorded yet.</span>';
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button,mark");
+  if (!b) return;
+  const D = b.dataset;
+
+  if (D.t) {
+    document.querySelectorAll("nav button").forEach(x => x.classList.toggle("on", x === b));
+    ["dash", "review", "log"].forEach(x => $(x).classList.toggle("hide", x !== D.t));
+    if (D.t === "dash") dash();
+    return;
+  }
+
+  if (D.a !== undefined) {
+    const i = issues[+D.a], el = $(i.field);
+    if (i.append) el.value = el.value.replace(/\s*$/, "") + "\n\n" + i.fix;
+    else el.value = el.value.slice(0, i.start) + i.fix + el.value.slice(i.end);
+    check();
+  } else if (D.d !== undefined) {
+    const i = issues[+D.d], r = prompt("Why is this waiver acceptable? (Recorded in the Audit Log)");
+    if (r) { dismissed.add(key(i)); render(); }
+  } else if (D.u !== undefined) {
+    dismissed.delete(key(issues[+D.u]));
+    render();
+  } else if (D.s !== undefined) {
+    const el = $("i" + D.s);
+    el && el.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+});
+
+$("check").onclick = () => { dismissed.clear(); check(); tally(); };
+$("clear").onclick = () => { $("txt").value = $("spec").value = ""; sig = null; issues = []; dismissed.clear(); status = "Draft"; render(); };
+$("sample").onchange = e => {
+  if (e.target.value === "") return;
+  const s = SAMPLES[+e.target.value];
+  $("type").value = s.type;
+  $("txt").value = s.txt;
+  $("spec").value = s.spec;
+  e.target.value = "";
+  dismissed.clear();
+  check();
+  tally();
+};
+
+$("approve").onclick = () => decide("Approved");
+$("changes").onclick = () => decide("Changes requested");
+$("reject").onclick = () => decide("Rejected");
+
+["txt", "spec", "type"].forEach(i => $(i).addEventListener("input", () => {
+  if (sig !== null) { status = "Draft (edited)"; render(); }
+}));
+
+const ST = "brandora_state_v2", SU = "brandora_user_v2";
+const TL = { complaint: "Complaint reply", post: "Social post", ad: "Advertisement", email: "Email", doc: "Document" };
+const RL = { creator: "Content Creator", reviewer: "Brand Reviewer", admin: "Admin" };
+let U = null;
+
+let S = {
+  checks: 18,
+  cats: { "Complaint Tone": 14, "Terminology": 19, "Approved facts": 11, "Claims": 9, "Tone": 12, "Visual identity": 8 },
+  log: [],
+  hist: [
+    { t: Date.now() - 36e5, who: "Asha Mehta", a: "Approved", type: "complaint", score: 100, open: 0, ex: "Thank you for flagging this. Our dedicated support specialist will follow up" },
+    { t: Date.now() - 9e6, who: "Rohan Desai", a: "Changes requested", type: "ad", score: 56, open: 3, ex: "brandora ai is a 100% hallucination-free, game-changing platform" },
+    { t: Date.now() - 2e8, who: "Asha Mehta", a: "Approved", type: "email", score: 100, open: 0, ex: "Brandora AI is SOC 2 Type II and ISO 27001 certified with Zero-Data-Retention" }
+  ]
+};
+
+try { const x = localStorage.getItem(ST); if (x) S = JSON.parse(x); } catch (e) {}
+log = S.log;
+
+function save() { try { localStorage.setItem(ST, JSON.stringify(S)); } catch (e) {} }
+function tally() { S.checks++; issues.forEach(i => S.cats[i.cat] = (S.cats[i.cat] || 0) + 1); save(); }
+
+function gate() {
+  if (!U) return;
+  const c = U.role === "creator";
+  ["approve", "changes", "reject"].forEach(i => $(i).disabled = c);
+  $("rolemsg").textContent = c ? "Content Creators can draft and apply fixes. Switch to a Brand Reviewer or Admin to grant final approval." : "";
+}
+
+function fixAll() {
+  if (sig === null) return;
+  for (const f of ["txt", "spec"]) {
+    const el = $(f);
+    let last = 1e9;
+    issues.filter(i => i.field === f && i.fix !== null && !i.append && !dismissed.has(key(i)))
+      .sort((a, b) => b.start - a.start)
+      .forEach(i => {
+        if (i.end > last) return;
+        el.value = el.value.slice(0, i.start) + i.fix + el.value.slice(i.end);
+        last = i.start;
+      });
+  }
+  issues.filter(i => i.append && !dismissed.has(key(i))).forEach(i => {
+    $("txt").value = $("txt").value.replace(/\s*$/, "") + "\n\n" + i.fix;
+  });
+  check();
+}
+
+function dash() {
+  const h = S.hist, ap = h.filter(x => x.a === "Approved").length, av = h.length ? Math.round(h.reduce((a, x) => a + x.score, 0) / h.length) : 0;
+  $("hello").textContent = "Welcome back, " + U.name.split(" ")[0];
+  $("kpis").innerHTML = [
+    ["Checks run", S.checks, "drafts & complaint replies scanned"],
+    ["Approved", ap, "signed off by human reviewer"],
+    ["Needs fixes", h.length - ap, "changes requested or rejected"],
+    ["Avg compliance", av + "/100", "brand governance score"]
+  ].map(k => `<div class="kpi"><div class="mu">${k[0]}</div><b>${k[1]}</b><small>${k[2]}</small></div>`).join("");
+
+  const m = Math.max(1, ...Object.values(S.cats));
+  $("cats").innerHTML = Object.entries(S.cats).sort((a, b) => b[1] - a[1]).map(([c, n]) =>
+    `<div class="bar"><span>${esc(c)}</span><i style="width:${n / m * 100}%"></i><b>${n}</b></div>`
+  ).join("");
+
+  $("recent").innerHTML = h.slice(0, 6).map(x =>
+    `<div class="rc"><span class="badge ${x.a === "Approved" ? "v" : "g"}">${esc(x.a)}</span> <b>${TL[x.type] || ""}</b> · ${x.score}/100<div class="mu" style="font-size:13px;margin-top:3px">${esc(x.who)} · ${new Date(x.t).toLocaleDateString()} · “${esc(x.ex)}…”</div></div>`
+  ).join("") || '<span class="mu">No decisions yet.</span>';
+}
+
+function enter(u) {
+  U = u;
+  try { localStorage.setItem(SU, JSON.stringify(u)); } catch (e) {}
+  $("login").classList.add("hide");
+  $("uchip").textContent = u.name + " · " + RL[u.role];
+  $("who").value = u.name;
+  document.querySelector("[data-t=dash]").click();
+  render();
+}
+
+$("signin").onclick = () => {
+  const e = $("em").value.trim();
+  if (!/^\S+@\S+\.\S+$/.test(e)) return $("lerr").textContent = "Enter a valid work email address.";
+  if ($("pw").value !== "brand123") return $("lerr").textContent = "Incorrect password. Demo password: brand123";
+  $("lerr").textContent = "";
+  enter({
+    name: e.split("@")[0].replace(/[._-]+/g, " ").replace(/\b\w/g, c => c.toUpperCase()),
+    email: e,
+    role: $("role").value
+  });
+};
+
+$("demo").onclick = () => enter({ name: "Asha Mehta", email: "asha@brandora.ai", role: "admin" });
+$("logout").onclick = () => { try { localStorage.removeItem(SU); } catch (e) {} U = null; $("login").classList.remove("hide"); };
+$("newcheck").onclick = () => document.querySelector("[data-t=review]").click();
+$("fixall").onclick = fixAll;
+
+renderLog();
+render();
+try { const u = localStorage.getItem(SU); if (u) enter(JSON.parse(u)); } catch (e) {}
+</script>
+</body>
+</html>
